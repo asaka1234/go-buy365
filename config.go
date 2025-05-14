@@ -1,8 +1,9 @@
 package go_buy365
 
 const (
-	ACCESS_KEY = "hiahaihaihaihaihaiahiahihaih"
-	
+	ACCESS_KEY = "hiahaihaihaihaihaiahiahihaih" //调用psp的签名key
+	BACK_KEY   = "hiahaihaihaihaihaiahiahihaih" //回调的签名key
+
 	//deposit
 	BASE_URL = "https://swpapi.tpex.cc/UtInRecordApi/orderGateWay"
 

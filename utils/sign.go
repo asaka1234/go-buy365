@@ -35,6 +35,25 @@ func SignDeposit(paramMap map[string]interface{}, accessKey string) string {
 	return signResult
 }
 
+// 验证签名
+func VerifySignDeposit(params map[string]interface{}, signKey string) bool {
+	// Check if sign exists in params
+	signValue, exists := params["sign"]
+	if !exists {
+		return false
+	}
+
+	// Get the sign value and remove it from params
+	key := fmt.Sprintf("%v", signValue)
+	delete(params, "sign")
+
+	// Generate current signature
+	currentKey := SignDeposit(params, signKey)
+
+	// Compare the signatures
+	return key == currentKey
+}
+
 // 计算withdraw请求签名
 func SignWithdraw(paramMap map[string]interface{}, accessKey string) string {
 

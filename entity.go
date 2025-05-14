@@ -92,3 +92,44 @@ type Buy365OrderData struct {
 	NumRow                   string `json:"numRow"`
 	StatusName               string `json:"statusName"`
 }
+
+// ---------------callback-----------------------
+type Buy365DepositCancelBackReq struct {
+	// 唯一订单号，商户下单时传过来的order_id
+	BillNo string `json:"bill_no"`
+	// 订单状态：1=订单已取消；2=订单已激活
+	BillStatus int `json:"bill_status"`
+	// 商户编号
+	SysNo string `json:"sys_no"`
+	// 签名，参照验签规范
+	Sign string `json:"sign"`
+}
+
+type Buy365DepositSucceedBackReq struct {
+	BillNo string `json:"bill_no"` // 必须包含订单号
+	Amount string `json:"amount"`  // 必须是数字字符串
+	SysNo  string `json:"sys_no"`  // 必须包含商户号
+	Sign   string `json:"sign"`    // 必须包含签名
+}
+
+type Buy365WithdrawCancelBackReq struct {
+	// 唯一订单号，商户下单时传过来的order_id
+	BillNo string `json:"bill_no"`
+	// 订单状态：1=订单已取消；2=订单已激活
+	BillStatus int `json:"bill_status"`
+	// 商户编号
+	SysNo string `json:"sys_no"`
+	// 签名，参照验签规范
+	Sign string `json:"sign"`
+}
+
+type Buy365WithdrawSucceedBackReq struct {
+	// 唯一订单号，商户下单时传过来的order_id
+	BillNo string `json:"bill_no"`
+	//订单金额
+	Amount string `json:"amount"`
+	//商户编号
+	SysNo string `json:"sys_no"`
+	//签名，参照验签规范
+	Sign string `json:"sign"`
+}

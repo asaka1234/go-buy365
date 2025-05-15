@@ -6,8 +6,9 @@ import (
 )
 
 type Client struct {
-	AccessKey string
-	BackKey   string
+	MerchantID string
+	AccessKey  string
+	BackKey    string
 
 	BaseURL            string
 	WithdrawURL        string
@@ -18,10 +19,11 @@ type Client struct {
 	logger   utils.Logger
 }
 
-func NewClient(logger utils.Logger, accessKey string, backKey string, baseURL string, withdrawURL, withdrawConfirmURL, orderListURL string) *Client {
+func NewClient(logger utils.Logger, merchantId string, accessKey string, backKey string, baseURL string, withdrawURL, withdrawConfirmURL, orderListURL string) *Client {
 	return &Client{
-		AccessKey: accessKey,
-		BackKey:   backKey,
+		MerchantID: merchantId,
+		AccessKey:  accessKey,
+		BackKey:    backKey,
 
 		BaseURL:            baseURL,
 		WithdrawURL:        withdrawURL,

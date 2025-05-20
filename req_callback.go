@@ -21,7 +21,7 @@ func (cli *Client) DepositCancelCallback(req Buy365DepositCancelBackReq, process
 }
 
 // 充值的回调处理(传入一个处理函数)
-func (cli *Client) depositSucceedBack(req Buy365DepositSucceedBackReq, processor func(Buy365DepositSucceedBackReq) error) error {
+func (cli *Client) DepositSucceedBack(req Buy365DepositSucceedBackReq, processor func(Buy365DepositSucceedBackReq) error) error {
 	//验证签名
 	paramMap := structs.Map(req)
 	verifyResult := utils.VerifySignDeposit(paramMap, cli.BackKey)

@@ -10,7 +10,7 @@ type Client struct {
 	AccessKey  string
 	BackKey    string
 
-	BaseURL            string
+	DepositURL         string
 	WithdrawURL        string
 	WithdrawConfirmURL string
 	OrderListURL       string
@@ -19,13 +19,13 @@ type Client struct {
 	logger   utils.Logger
 }
 
-func NewClient(logger utils.Logger, merchantId string, accessKey string, backKey string, baseURL string, withdrawURL, withdrawConfirmURL, orderListURL string) *Client {
+func NewClient(logger utils.Logger, merchantId string, accessKey string, backKey string, depositURL string, withdrawURL, withdrawConfirmURL, orderListURL string) *Client {
 	return &Client{
 		MerchantID: merchantId,
 		AccessKey:  accessKey,
 		BackKey:    backKey,
 
-		BaseURL:            baseURL,
+		DepositURL:         depositURL,
 		WithdrawURL:        withdrawURL,
 		WithdrawConfirmURL: withdrawConfirmURL,
 		OrderListURL:       orderListURL,

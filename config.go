@@ -6,7 +6,7 @@ const (
 	BACK_KEY    = "hiahaihaihaihaihaiahiahihaih" //回调的签名key
 
 	//deposit
-	BASE_URL = "https://swpapi.tpex.cc/UtInRecordApi/orderGateWay"
+	DEPOSIT_URL = "https://swpapi.tpex.cc/UtInRecordApi/orderGateWay"
 
 	//withdraw
 	WITHDRAW_URL         = "https://mmapi.proxima131.com/AjaxOpen/saveOutOrder"

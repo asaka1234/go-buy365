@@ -3,7 +3,7 @@ package go_buy365
 import (
 	"crypto/tls"
 	"github.com/asaka1234/go-buy365/utils"
-	"github.com/fatih/structs"
+	"github.com/mitchellh/mapstructure"
 )
 
 // withdraw确认
@@ -11,18 +11,22 @@ func (cli *Client) WithdrawConfirm(req Buy365WithdrawConfirmReq) (*Buy365Withdra
 
 	rawURL := cli.WithdrawConfirmURL
 
+	var params map[string]interface{}
+	mapstructure.Decode(req, &params)
+	params["sys_no"] = cli.MerchantID
+
+	//签名
+	signStr := utils.SignDeposit(params, cli.AccessKey)
+	params["sign"] = signStr
+
 	//返回值会放到这里
 	var result Buy365WithdrawConfirmResponse
-
-	//构造请求(加签名)
-	paramMap := structs.Map(req)
-	signStr := utils.SignDeposit(paramMap, cli.AccessKey)
-	paramMap["sign"] = signStr
 
 	_, err := cli.ryClient.SetTLSClientConfig(&tls.Config{InsecureSkipVerify: true}).
 		SetCloseConnection(true).
 		R().
-		SetBody(paramMap).
+		SetHeaders(getHeaders()).
+		SetMultipartFormData(utils.ConvertToStringMap(params)).
 		SetResult(&result).
 		Post(rawURL)
 

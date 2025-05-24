@@ -2,8 +2,8 @@ package go_buy365
 
 import (
 	"crypto/tls"
+	"encoding/json"
 	"github.com/asaka1234/go-buy365/utils"
-	"github.com/fatih/structs"
 )
 
 // withdraw
@@ -11,18 +11,26 @@ func (cli *Client) Withdraw(req Buy365WithdrawReq) (*Buy365WithdrawResponse, err
 
 	rawURL := cli.WithdrawURL
 
+	jsonData, err := json.Marshal(req.Data)
+	if err != nil {
+		return nil, err
+	}
+	params := make(map[string]interface{})
+	params["data"] = string(jsonData)
+	params["sys_no"] = cli.MerchantID
+
+	//签名
+	signStr := utils.SignWithdraw(params, cli.AccessKey)
+	params["sign"] = signStr
+
 	//返回值会放到这里
 	var result Buy365WithdrawResponse
 
-	//构造请求(加签名)
-	paramMap := structs.Map(req)
-	signStr := utils.SignWithdraw(paramMap, cli.AccessKey)
-	paramMap["sign"] = signStr
-
-	_, err := cli.ryClient.SetTLSClientConfig(&tls.Config{InsecureSkipVerify: true}).
+	_, err = cli.ryClient.SetTLSClientConfig(&tls.Config{InsecureSkipVerify: true}).
 		SetCloseConnection(true).
 		R().
-		SetBody(paramMap).
+		SetHeaders(getHeaders()).
+		SetMultipartFormData(utils.ConvertToStringMap(params)).
 		SetResult(&result).
 		Post(rawURL)
 

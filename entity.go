@@ -14,15 +14,24 @@ type Buy365DepositReq struct {
 	//OrderTime string `json:"order_time" mapstructure:"order_time"` // 订单时间 格式:yyyy-MM-dd HH:mm:ss
 }
 
-type Buy365DepositResponse struct {
+// 不管是正确/失败的通用字段返回
+type Buy365DepositCommonResponse struct {
 	Code   int    `json:"code"`   // 111 是正确
 	Status string `json:"status"` //success 是正确
 	Msg    string `json:"msg"`
-	Data   struct {
-		OrderNo string `json:"order_no"` // 订单编号
-		SendUrl string `json:"send_url"` // 发送URL
-		UserId  string `json:"user_id"`  // 用户ID
-	} `json:"data"`
+}
+
+type Buy365DepositResponse struct {
+	Code   int                        `json:"code" mapstructure:"code"`     // 111 是正确
+	Status string                     `json:"status" mapstructure:"status"` //success 是正确
+	Msg    string                     `json:"msg" mapstructure:"msg"`
+	Data   *Buy365DepositResponseData `json:"data" mapstructure:"data"`
+}
+
+type Buy365DepositResponseData struct {
+	OrderNo string `json:"order_no" mapstructure:"order_no"` // 订单编号
+	SendUrl string `json:"send_url" mapstructure:"send_url"` // 发送URL
+	UserId  string `json:"user_id" mapstructure:"user_id"`   // 用户ID
 }
 
 // ------------------------------------------------------------
@@ -57,7 +66,7 @@ type Buy365WithdrawData struct {
 }
 
 type Buy365WithdrawResponse struct {
-	Code int    `json:"code"` //
+	Code int    `json:"code"` //200是成功
 	Msg  string `json:"msg"`
 }
 

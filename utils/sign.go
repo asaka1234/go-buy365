@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/samber/lo"
 	"github.com/spf13/cast"
+	"net/url"
 	"sort"
 )
 
@@ -17,6 +18,7 @@ func SignDeposit(params map[string]interface{}, accessKey string) string {
 	rawString := ""
 	lo.ForEach(keys, func(x string, index int) {
 		value := cast.ToString(params[x])
+		value = url.QueryEscape(value)
 		rawString += fmt.Sprintf("%s=%s", x, value)
 
 		if index != len(params)-1 {

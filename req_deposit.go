@@ -2,6 +2,8 @@ package go_buy365
 
 import (
 	"crypto/tls"
+	"encoding/json"
+	"fmt"
 	"github.com/asaka1234/go-buy365/utils"
 	"github.com/mitchellh/mapstructure"
 	"time"
@@ -22,9 +24,9 @@ func (cli *Client) Deposit(req Buy365DepositReq) (*Buy365DepositResponse, error)
 	params["sign"] = signStr
 
 	//返回值会放到这里
-	var result Buy365DepositResponse
+	var result Buy365DepositCommonResponse
 
-	_, err := cli.ryClient.SetTLSClientConfig(&tls.Config{InsecureSkipVerify: true}).
+	resp2, err := cli.ryClient.SetTLSClientConfig(&tls.Config{InsecureSkipVerify: true}).
 		SetCloseConnection(true).
 		R().
 		SetHeaders(getHeaders()).
@@ -36,5 +38,24 @@ func (cli *Client) Deposit(req Buy365DepositReq) (*Buy365DepositResponse, error)
 		return nil, err
 	}
 
-	return &result, err
+	//------------------------------------------------------
+	if result.Code == 111 && result.Status == "success" {
+		//说明成功
+
+		//step-1
+		var data map[string]interface{}
+		if err := json.Unmarshal(resp2.Body(), &data); err != nil {
+			return nil, err
+		}
+
+		//step-2
+		var resp3 Buy365DepositResponse
+		if err := mapstructure.Decode(data, &resp3); err != nil {
+			return nil, err
+		}
+
+		return &resp3, nil
+	}
+
+	return nil, fmt.Errorf("request error, code:%d, msg:%s", result.Code, result.Msg)
 }

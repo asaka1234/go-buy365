@@ -17,4 +17,4 @@
 Comment
 ===============
 1. both support deposit && withdrawl
-2. 支持application/multipart/form-data格式.
+2. 支持multipart/form-data格式.

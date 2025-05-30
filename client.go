@@ -6,29 +6,15 @@ import (
 )
 
 type Client struct {
-	MerchantID string
-	AccessKey  string
-	BackKey    string
-
-	DepositURL         string
-	WithdrawURL        string
-	WithdrawConfirmURL string
-	OrderListURL       string
+	Params Buy365InitParams
 
 	ryClient *resty.Client
 	logger   utils.Logger
 }
 
-func NewClient(logger utils.Logger, merchantId string, accessKey string, backKey string, depositURL string, withdrawURL, withdrawConfirmURL, orderListURL string) *Client {
+func NewClient(logger utils.Logger, params Buy365InitParams) *Client {
 	return &Client{
-		MerchantID: merchantId,
-		AccessKey:  accessKey,
-		BackKey:    backKey,
-
-		DepositURL:         depositURL,
-		WithdrawURL:        withdrawURL,
-		WithdrawConfirmURL: withdrawConfirmURL,
-		OrderListURL:       orderListURL,
+		Params: params,
 
 		ryClient: resty.New(), //client实例
 		logger:   logger,

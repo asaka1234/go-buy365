@@ -9,7 +9,7 @@ import (
 // withdraw
 func (cli *Client) Withdraw(req Buy365WithdrawReq) (*Buy365WithdrawResponse, error) {
 
-	rawURL := cli.WithdrawURL
+	rawURL := cli.Params.WithdrawUrl
 
 	jsonData, err := json.Marshal(req.Data)
 	if err != nil {
@@ -17,10 +17,10 @@ func (cli *Client) Withdraw(req Buy365WithdrawReq) (*Buy365WithdrawResponse, err
 	}
 	params := make(map[string]interface{})
 	params["data"] = string(jsonData)
-	params["sys_no"] = cli.MerchantID
+	params["sys_no"] = cli.Params.MerchantId
 
 	//签名
-	signStr := utils.SignWithdraw(params, cli.AccessKey)
+	signStr := utils.SignWithdraw(params, cli.Params.AccessKey)
 	params["sign"] = signStr
 
 	//返回值会放到这里

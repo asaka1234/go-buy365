@@ -12,12 +12,12 @@ func (cli *Client) DepositCancelCallback(req Buy365DepositCancelBackReq, process
 	var params map[string]interface{}
 	mapstructure.Decode(req, &params)
 
-	verifyResult := utils.VerifySignDeposit(params, cli.BackKey)
+	verifyResult := utils.VerifySignDeposit(params, cli.Params.BackKey)
 	if !verifyResult {
 		//验签失败
 		return errors.New("verify sign error!")
 	}
-	if req.SysNo != cli.MerchantID {
+	if req.SysNo != cli.Params.MerchantId {
 		return errors.New("merchanID is wrong!")
 	}
 
@@ -32,12 +32,12 @@ func (cli *Client) DepositSucceedCallBack(req Buy365DepositSucceedBackReq, proce
 		"bill_no": req.BillNo, //只是value的拼接
 	}
 
-	verifyResult := utils.VerifySignWithdraw(params, cli.BackKey)
+	verifyResult := utils.VerifySignWithdraw(params, cli.Params.BackKey)
 	if !verifyResult {
 		//验签失败
 		return errors.New("verify sign error!")
 	}
-	if req.SysNo != cli.MerchantID {
+	if req.SysNo != cli.Params.MerchantId {
 		return errors.New("merchanID is wrong!")
 	}
 
@@ -53,12 +53,12 @@ func (cli *Client) WithdrawCancelCallBack(req Buy365WithdrawCancelBackReq, proce
 	var params map[string]interface{}
 	mapstructure.Decode(req, &params)
 
-	verifyResult := utils.VerifySignDeposit(params, cli.BackKey)
+	verifyResult := utils.VerifySignDeposit(params, cli.Params.BackKey)
 	if !verifyResult {
 		//验签失败
 		return errors.New("verify sign error!")
 	}
-	if req.SysNo != cli.MerchantID {
+	if req.SysNo != cli.Params.MerchantId {
 		return errors.New("merchanID is wrong!")
 	}
 
@@ -73,12 +73,12 @@ func (cli *Client) WithdrawSucceedCallBack(req Buy365WithdrawSucceedBackReq, pro
 		"bill_no": req.BillNo, //只是value的拼接
 	}
 
-	verifyResult := utils.VerifySignWithdraw(params, cli.BackKey)
+	verifyResult := utils.VerifySignWithdraw(params, cli.Params.BackKey)
 	if !verifyResult {
 		//验签失败
 		return errors.New("verify sign error!")
 	}
-	if req.SysNo != cli.MerchantID {
+	if req.SysNo != cli.Params.MerchantId {
 		return errors.New("merchanID is wrong!")
 	}
 

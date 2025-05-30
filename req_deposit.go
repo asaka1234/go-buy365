@@ -12,15 +12,15 @@ import (
 // pre-order
 func (cli *Client) Deposit(req Buy365DepositReq) (*Buy365DepositResponse, error) {
 
-	rawURL := cli.DepositURL
+	rawURL := cli.Params.DepositUrl
 
 	var params map[string]interface{}
 	mapstructure.Decode(req, &params)
-	params["sys_no"] = cli.MerchantID
+	params["sys_no"] = cli.Params.MerchantId
 	params["order_time"] = time.Now().Format("2006-01-02 15:04:05")
 
 	//签名
-	signStr := utils.SignDeposit(params, cli.AccessKey)
+	signStr := utils.SignDeposit(params, cli.Params.AccessKey)
 	params["sign"] = signStr
 
 	//返回值会放到这里

@@ -9,14 +9,14 @@ import (
 // withdraw确认
 func (cli *Client) WithdrawConfirm(req Buy365WithdrawConfirmReq) (*Buy365WithdrawConfirmResponse, error) {
 
-	rawURL := cli.WithdrawConfirmURL
+	rawURL := cli.Params.WithdrawConfirmUrl
 
 	var params map[string]interface{}
 	mapstructure.Decode(req, &params)
-	params["sys_no"] = cli.MerchantID
+	params["sys_no"] = cli.Params.MerchantId
 
 	//签名
-	signStr := utils.SignDeposit(params, cli.AccessKey)
+	signStr := utils.SignDeposit(params, cli.Params.AccessKey)
 	params["sign"] = signStr
 
 	//返回值会放到这里

@@ -1,5 +1,16 @@
 package go_buy365
 
+type Buy365InitParams struct {
+	MerchantId string `json:"merchantId" mapstructure:"merchantId" config:"merchantId"` // merchantId
+	AccessKey  string `json:"accessKey" mapstructure:"accessKey" config:"accessKey"`
+	BackKey    string `json:"backKey" mapstructure:"backKey" config:"backKey"`
+
+	DepositUrl         string `json:"depositUrl" mapstructure:"depositUrl" config:"depositUrl"`
+	WithdrawUrl        string `json:"withdrawUrl" mapstructure:"withdrawUrl" config:"withdrawUrl"`
+	WithdrawConfirmUrl string `json:"withdrawConfirmUrl" mapstructure:"withdrawConfirmUrl" config:"withdrawConfirmUrl"`
+	OrderListUrl       string `json:"orderListUrl" mapstructure:"orderListUrl" config:"orderListUrl"`
+}
+
 // ----------pre order-------------------------
 
 type Buy365DepositReq struct {

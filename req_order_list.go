@@ -7,14 +7,14 @@ import (
 
 func (cli *Client) GetOrderList() (*Buy365OrderListRsp, error) {
 
-	rawURL := cli.OrderListURL
+	rawURL := cli.Params.OrderListUrl
 
 	params := map[string]interface{}{
-		"sys_no": cli.MerchantID,
+		"sys_no": cli.Params.MerchantId,
 	}
 
 	//签名
-	signStr := utils.SignDeposit(params, cli.AccessKey)
+	signStr := utils.SignDeposit(params, cli.Params.AccessKey)
 	params["sign"] = signStr
 
 	//返回值会放到这里

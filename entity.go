@@ -1,14 +1,14 @@
 package go_buy365
 
 type Buy365InitParams struct {
-	MerchantId string `json:"merchantId" mapstructure:"merchantId" config:"merchantId"` // merchantId
-	AccessKey  string `json:"accessKey" mapstructure:"accessKey" config:"accessKey"`
-	BackKey    string `json:"backKey" mapstructure:"backKey" config:"backKey"`
+	MerchantId string `json:"merchantId" mapstructure:"merchantId" config:"merchantId"  yaml:"merchantId"` // merchantId
+	AccessKey  string `json:"accessKey" mapstructure:"accessKey" config:"accessKey"  yaml:"accessKey"`
+	BackKey    string `json:"backKey" mapstructure:"backKey" config:"backKey"  yaml:"backKey"`
 
-	DepositUrl         string `json:"depositUrl" mapstructure:"depositUrl" config:"depositUrl"`
-	WithdrawUrl        string `json:"withdrawUrl" mapstructure:"withdrawUrl" config:"withdrawUrl"`
-	WithdrawConfirmUrl string `json:"withdrawConfirmUrl" mapstructure:"withdrawConfirmUrl" config:"withdrawConfirmUrl"`
-	OrderListUrl       string `json:"orderListUrl" mapstructure:"orderListUrl" config:"orderListUrl"`
+	DepositUrl         string `json:"depositUrl" mapstructure:"depositUrl" config:"depositUrl"  yaml:"depositUrl"`
+	WithdrawUrl        string `json:"withdrawUrl" mapstructure:"withdrawUrl" config:"withdrawUrl"  yaml:"withdrawUrl"`
+	WithdrawConfirmUrl string `json:"withdrawConfirmUrl" mapstructure:"withdrawConfirmUrl" config:"withdrawConfirmUrl"  yaml:"withdrawConfirmUrl"`
+	OrderListUrl       string `json:"orderListUrl" mapstructure:"orderListUrl" config:"orderListUrl"  yaml:"orderListUrl"`
 }
 
 // ----------pre order-------------------------

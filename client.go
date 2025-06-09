@@ -6,14 +6,14 @@ import (
 )
 
 type Client struct {
-	Params Buy365InitParams
+	Params *Buy365InitParams
 
 	ryClient  *resty.Client
 	debugMode bool
 	logger    utils.Logger
 }
 
-func NewClient(logger utils.Logger, params Buy365InitParams) *Client {
+func NewClient(logger utils.Logger, params *Buy365InitParams) *Client {
 	return &Client{
 		Params: params,
 
@@ -23,6 +23,6 @@ func NewClient(logger utils.Logger, params Buy365InitParams) *Client {
 	}
 }
 
-func (cli *Client) SetDebugModel(debugModel bool) {
-	cli.debugMode = debugModel
+func (cli *Client) SetDebugModel(debugMode bool) {
+	cli.debugMode = debugMode
 }

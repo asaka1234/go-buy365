@@ -31,6 +31,7 @@ func (cli *Client) Withdraw(req Buy365WithdrawReq) (*Buy365WithdrawResponse, err
 		R().
 		SetHeaders(getHeaders()).
 		SetMultipartFormData(utils.ConvertToStringMap(params)).
+		SetDebug(cli.debugMode).
 		SetResult(&result).
 		Post(rawURL)
 

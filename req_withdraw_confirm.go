@@ -27,6 +27,7 @@ func (cli *Client) WithdrawConfirm(req Buy365WithdrawConfirmReq) (*Buy365Withdra
 		R().
 		SetHeaders(getHeaders()).
 		SetMultipartFormData(utils.ConvertToStringMap(params)).
+		SetDebug(cli.debugMode).
 		SetResult(&result).
 		Post(rawURL)
 

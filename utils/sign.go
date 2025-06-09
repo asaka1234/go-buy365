@@ -9,6 +9,7 @@ import (
 )
 
 // 计算请求签名
+// k=v&k=v组成签名字符串
 func SignDeposit(params map[string]interface{}, accessKey string) string {
 
 	keys := lo.Keys(params)
@@ -58,6 +59,7 @@ func VerifySignDeposit(params map[string]interface{}, signKey string) bool {
 //-------------------------------------------------------
 
 // 计算withdraw请求签名
+// v1v2...组成签名字符串
 func SignWithdraw(paramMap map[string]interface{}, accessKey string) string {
 
 	keys := lo.Keys(paramMap)

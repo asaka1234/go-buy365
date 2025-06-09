@@ -25,6 +25,7 @@ func (cli *Client) GetOrderList() (*Buy365OrderListRsp, error) {
 		R().
 		SetHeaders(getHeaders()).
 		SetMultipartFormData(utils.ConvertToStringMap(params)).
+		SetDebug(cli.debugMode).
 		SetResult(&result).
 		Post(rawURL)
 

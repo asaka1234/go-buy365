@@ -1,0 +1,20 @@
+package go_buy365
+
+import (
+	"fmt"
+	"testing"
+)
+
+func TestOrderList(t *testing.T) {
+	vLog := VLog{}
+	//构造client
+	cli := NewClient(vLog, &Buy365InitParams{MERCHANT_ID, ACCESS_KEY, BACK_KEY, IP, DEPOSIT_URL, WITHDRAW_URL, WITHDRAW_CONFIRM_URL, ORDERLIST_URL})
+
+	//发请求
+	resp, err := cli.GetOrderList()
+	if err != nil {
+		fmt.Printf("err:%s\n", err.Error())
+		return
+	}
+	fmt.Printf("resp:%+v\n", resp)
+}

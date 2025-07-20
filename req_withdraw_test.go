@@ -27,7 +27,7 @@ func GenWithdrawRequestDemo() Buy365WithdrawReq {
 				BankCardNo:  "30787",
 				SerialNo:    "129090",
 				BankAddress: "具体地址",
-				Amount:      "60000.00", //商户订单号
+				Amount:      "15.00", //商户订单号
 			},
 		},
 	}

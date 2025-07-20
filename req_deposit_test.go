@@ -40,7 +40,7 @@ func GenDepositRequestDemo() Buy365DepositReq {
 		OrderId:     "32342", //商户uid
 		UserId:      "30779639363",
 		OrderIp:     "18.29.120.32",
-		OrderAmount: "600.00",
+		OrderAmount: "30.00",
 		PayUserName: "你好", //商户订单号
 	}
 }

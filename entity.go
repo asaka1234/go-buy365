@@ -106,14 +106,14 @@ type Buy365WithdrawConfirmReq struct {
 }
 
 type Buy365WithdrawConfirmResponse struct {
-	Code string `json:"code"` //
+	Code int    `json:"code"` //
 	Msg  string `json:"msg"`
 }
 
 // =================单独请求===============================
 
 type Buy365OrderListRsp struct {
-	Code   string                `json:"code"` //
+	Code   int                   `json:"code"` //
 	Msg    string                `json:"msg"`
 	Result Buy365OrderPageResult `json:"result"`
 }

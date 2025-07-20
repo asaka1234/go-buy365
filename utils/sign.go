@@ -30,10 +30,11 @@ func SignDeposit(params map[string]interface{}, accessKey string) string {
 	// 3. 将secretKey拼接到最后
 	rawString += accessKey
 
-	fmt.Printf("[rawString]%s\n", rawString)
-
 	//4. 计算md5签名
 	signResult := GetMD5([]byte(rawString))
+
+	fmt.Printf("[rawString]%s[sign]%s\n", rawString, signResult)
+
 	return signResult
 }
 

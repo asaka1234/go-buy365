@@ -30,6 +30,7 @@ func (cli *Client) DepositSucceedCallBack(req Buy365DepositSucceedBackReq, proce
 	//验证签名
 	params := map[string]interface{}{
 		"bill_no": req.BillNo, //只是value的拼接
+		"sign":    req.Sign,
 	}
 
 	verifyResult := utils.VerifySignWithdraw(params, cli.Params.BackKey)
@@ -71,6 +72,7 @@ func (cli *Client) WithdrawSucceedCallBack(req Buy365WithdrawSucceedBackReq, pro
 	//验证签名
 	params := map[string]interface{}{
 		"bill_no": req.BillNo, //只是value的拼接
+		"sign":    req.Sign,
 	}
 
 	verifyResult := utils.VerifySignWithdraw(params, cli.Params.BackKey)

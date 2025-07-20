@@ -55,10 +55,11 @@ type Buy365DepositCancelBackReq struct {
 }
 
 type Buy365DepositSucceedBackReq struct {
-	BillNo string `json:"bill_no" mapstructure:"bill_no"` // 必须包含订单号
-	Amount string `json:"amount" mapstructure:"amount"`   // 必须是数字字符串
-	SysNo  string `json:"sys_no" mapstructure:"sys_no"`   // 必须包含商户号
-	Sign   string `json:"sign" mapstructure:"sign"`       // 必须包含签名
+	BillNo     string `json:"bill_no" mapstructure:"bill_no"`         // 必须包含订单号
+	Amount     string `json:"amount" mapstructure:"amount"`           // 必须是数字字符串
+	AmountUsdt string `json:"amount_usdt" mapstructure:"amount_usdt"` // 必须是数字字符串
+	SysNo      string `json:"sys_no" mapstructure:"sys_no"`           // 必须包含商户号
+	Sign       string `json:"sign" mapstructure:"sign"`               // 必须包含签名
 }
 
 //===========withdraw===================================

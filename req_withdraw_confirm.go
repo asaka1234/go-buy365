@@ -18,7 +18,7 @@ func (cli *Client) WithdrawConfirm(req Buy365WithdrawConfirmReq) (*Buy365Withdra
 	params["sys_no"] = cli.Params.MerchantId
 
 	//签名
-	signStr := utils.SignDeposit(params, cli.Params.AccessKey)
+	signStr := utils.SignWithdraw(params, cli.Params.AccessKey)
 	params["sign"] = signStr
 
 	//返回值会放到这里

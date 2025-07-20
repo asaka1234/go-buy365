@@ -16,7 +16,7 @@ func (cli *Client) GetOrderList() (*Buy365OrderListRsp, error) {
 	}
 
 	//签名
-	signStr := utils.SignDeposit(params, cli.Params.AccessKey)
+	signStr := utils.SignWithdraw(params, cli.Params.AccessKey)
 	params["sign"] = signStr
 
 	//返回值会放到这里

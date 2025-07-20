@@ -6,9 +6,9 @@ import (
 )
 
 func TestWithdraw(t *testing.T) {
-
+	vLog := VLog{}
 	//构造client
-	cli := NewClient(nil, &Buy365InitParams{MERCHANT_ID, ACCESS_KEY, BACK_KEY, DEPOSIT_URL, WITHDRAW_URL, WITHDRAW_CONFIRM_URL, ORDERLIST_URL})
+	cli := NewClient(vLog, &Buy365InitParams{MERCHANT_ID, ACCESS_KEY, BACK_KEY, IP, DEPOSIT_URL, WITHDRAW_URL, WITHDRAW_CONFIRM_URL, ORDERLIST_URL})
 
 	//发请求
 	resp, err := cli.Withdraw(GenWithdrawRequestDemo())

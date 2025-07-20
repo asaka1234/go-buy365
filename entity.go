@@ -4,6 +4,7 @@ type Buy365InitParams struct {
 	MerchantId string `json:"merchantId" mapstructure:"merchantId" config:"merchantId"  yaml:"merchantId"` // merchantId
 	AccessKey  string `json:"accessKey" mapstructure:"accessKey" config:"accessKey"  yaml:"accessKey"`
 	BackKey    string `json:"backKey" mapstructure:"backKey" config:"backKey"  yaml:"backKey"`
+	IP         string `json:"ip" mapstructure:"ip" config:"ip"  yaml:"ip"` //对方ip白名单
 
 	DepositUrl         string `json:"depositUrl" mapstructure:"depositUrl" config:"depositUrl"  yaml:"depositUrl"`
 	WithdrawUrl        string `json:"withdrawUrl" mapstructure:"withdrawUrl" config:"withdrawUrl"  yaml:"withdrawUrl"`

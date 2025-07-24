@@ -34,7 +34,7 @@ func (cli *Client) WithdrawConfirm(req Buy365WithdrawConfirmReq) (*Buy365Withdra
 		Post(rawURL)
 
 	restLog, _ := jsoniter.ConfigCompatibleWithStandardLibrary.Marshal(utils.GetRestyLog(resp2))
-	cli.logger.Infof("PSPResty#but365#withdrawconfirm->%+v", string(restLog))
+	cli.logger.Infof("PSPResty#buy365#withdrawconfirm->%+v", string(restLog))
 
 	if err != nil {
 		return nil, err

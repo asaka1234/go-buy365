@@ -32,7 +32,7 @@ func (cli *Client) GetOrderList() (*Buy365OrderListRsp, error) {
 		Post(rawURL)
 
 	restLog, _ := jsoniter.ConfigCompatibleWithStandardLibrary.Marshal(utils.GetRestyLog(resp2))
-	cli.logger.Infof("PSPResty#but365#orderlist->%+v", string(restLog))
+	cli.logger.Infof("PSPResty#buy365#orderlist->%+v", string(restLog))
 
 	if err != nil {
 		return nil, err

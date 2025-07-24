@@ -37,7 +37,7 @@ func (cli *Client) Deposit(req Buy365DepositReq) (*Buy365DepositResponse, error)
 		Post(rawURL)
 
 	restLog, _ := jsoniter.ConfigCompatibleWithStandardLibrary.Marshal(utils.GetRestyLog(resp2))
-	cli.logger.Infof("PSPResty#but365#deposit->%+v", string(restLog))
+	cli.logger.Infof("PSPResty#buy365#deposit->%+v", string(restLog))
 
 	if err != nil {
 		return nil, err

@@ -76,5 +76,5 @@ func (cli *Client) Deposit(req Buy365DepositReq) (*Buy365DepositResponse, error)
 		Code:   result.Code,
 		Status: result.Status,
 		Msg:    result.Msg,
-	}, fmt.Errorf("result is failed")
+	}, nil
 }

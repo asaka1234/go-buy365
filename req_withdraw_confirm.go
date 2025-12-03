@@ -28,6 +28,7 @@ func (cli *Client) WithdrawConfirm(req Buy365WithdrawConfirmReq) (*Buy365Withdra
 		SetCloseConnection(true).
 		R().
 		SetHeaders(getHeaders()).
+		SetBody(params).
 		SetMultipartFormData(utils.ConvertToStringMap(params)).
 		SetDebug(cli.debugMode).
 		SetResult(&result).

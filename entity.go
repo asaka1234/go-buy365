@@ -48,18 +48,18 @@ type Buy365DepositResponseData struct {
 
 // ------------------------------------------------------------
 type Buy365DepositCancelBackReq struct {
-	BillNo     string `json:"bill_no" mapstructure:"bill_no"`         // 唯一订单号，商户下单时传过来的order_id
-	BillStatus int    `json:"bill_status" mapstructure:"bill_status"` // 订单状态：1=订单已取消；2=订单已激活
-	SysNo      string `json:"sys_no" mapstructure:"sys_no"`           // 商户编号
-	Sign       string `json:"sign" mapstructure:"sign"`               // 签名，参照验签规范
+	BillNo     string `form:"bill_no" json:"bill_no" mapstructure:"bill_no"`             // 唯一订单号，商户下单时传过来的order_id
+	BillStatus int    `form:"bill_status" json:"bill_status" mapstructure:"bill_status"` // 订单状态：1=订单已取消；2=订单已激活
+	SysNo      string `form:"sys_no" json:"sys_no" mapstructure:"sys_no"`                // 商户编号
+	Sign       string `form:"sign" json:"sign" mapstructure:"sign"`                      // 签名，参照验签规范
 }
 
 type Buy365DepositSucceedBackReq struct {
-	BillNo     string `json:"bill_no" mapstructure:"bill_no"`         // 必须包含订单号
-	Amount     string `json:"amount" mapstructure:"amount"`           // 必须是数字字符串
-	AmountUsdt string `json:"amount_usdt" mapstructure:"amount_usdt"` // 必须是数字字符串
-	SysNo      string `json:"sys_no" mapstructure:"sys_no"`           // 必须包含商户号
-	Sign       string `json:"sign" mapstructure:"sign"`               // 必须包含签名
+	BillNo     string `form:"bill_no" json:"bill_no" mapstructure:"bill_no"`             // 必须包含订单号
+	Amount     string `form:"amount" json:"amount" mapstructure:"amount"`                // 必须是数字字符串
+	AmountUsdt string `form:"amount_usdt" json:"amount_usdt" mapstructure:"amount_usdt"` // 必须是数字字符串
+	SysNo      string `form:"sys_no" json:"sys_no" mapstructure:"sys_no"`                // 必须包含商户号
+	Sign       string `form:"sign" json:"sign" mapstructure:"sign"`                      // 必须包含签名
 }
 
 //===========withdraw===================================
@@ -84,17 +84,17 @@ type Buy365WithdrawResponse struct {
 }
 
 type Buy365WithdrawCancelBackReq struct {
-	BillNo     string `json:"bill_no" mapstructure:"bill_no"`         // 唯一订单号，商户下单时传过来的order_id
-	BillStatus int    `json:"bill_status" mapstructure:"bill_status"` // 订单状态：1=订单已取消；2=订单已激活
-	SysNo      string `json:"sys_no" mapstructure:"sys_no"`           // 商户编号
-	Sign       string `json:"sign" mapstructure:"sign"`               // 签名，参照验签规范
+	BillNo     string `form:"bill_no" json:"bill_no" mapstructure:"bill_no"`             // 唯一订单号，商户下单时传过来的order_id
+	BillStatus int    `form:"bill_status" json:"bill_status" mapstructure:"bill_status"` // 订单状态：1=订单已取消；2=订单已激活
+	SysNo      string `form:"sys_no" json:"sys_no" mapstructure:"sys_no"`                // 商户编号
+	Sign       string `form:"sign" json:"sign" mapstructure:"sign"`                      // 签名，参照验签规范
 }
 
 type Buy365WithdrawSucceedBackReq struct {
-	BillNo string `json:"bill_no" mapstructure:"bill_no"` // 唯一订单号，商户下单时传过来的order_id
-	Amount string `json:"amount" mapstructure:"amount"`   //订单金额
-	SysNo  string `json:"sys_no" mapstructure:"sys_no"`   //商户编号
-	Sign   string `json:"sign" mapstructure:"sign"`       //签名，参照验签规范
+	BillNo string `form:"bill_no" json:"bill_no" mapstructure:"bill_no"` // 唯一订单号，商户下单时传过来的order_id
+	Amount string `form:"amount" json:"amount" mapstructure:"amount"`    //订单金额
+	SysNo  string `form:"sys_no" json:"sys_no" mapstructure:"sys_no"`    //商户编号
+	Sign   string `form:"sign" json:"sign" mapstructure:"sign"`          //签名，参照验签规范
 }
 
 // ----------withdraw confirm-------------------------

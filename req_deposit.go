@@ -31,6 +31,7 @@ func (cli *Client) Deposit(req Buy365DepositReq) (*Buy365DepositResponse, error)
 		SetCloseConnection(true).
 		R().
 		SetHeaders(getHeaders()).
+		SetBody(params).
 		SetMultipartFormData(utils.ConvertToStringMap(params)).
 		SetDebug(cli.debugMode).
 		SetResult(&result).
